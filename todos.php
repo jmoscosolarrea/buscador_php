@@ -2,7 +2,6 @@
     require 'conexion.php';
     $viviendas = json_decode($data);
     foreach ($viviendas as $vivienda){
-        
         $direccion = $vivienda->Direccion;
         $ciudad = $vivienda->Ciudad;
         $telefono = $vivienda->Telefono;
