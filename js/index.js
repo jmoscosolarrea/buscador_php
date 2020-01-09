@@ -36,30 +36,34 @@ function playVideoOnScroll(){
     .scroll((event)=>{
       var scrollActual = $(window).scrollTop();
       if (scrollActual > ultimoScroll){
-       video.play();
+     //  video.play();
      } else {
         //this.rewind(1.0, video, intervalRewind);
-        video.play();
+      //  video.play();
      }
      ultimoScroll = scrollActual;
     })
     .scrollEnd(()=>{
-      video.pause();
+    // video.pause();
     }, 10)
 }
 
 inicializarSlider();
 playVideoOnScroll();
 
-$.ready(function () {
-  $.fn("#mostrarTodos").click(function () {
-    $.ajax({
-      type: "POST",
-      url: "todos.php",
-      //          data: ,
-      success: function (data) {
-        alert('data');
-      }
-    });
+$("button.todos").click(function (event) {
+  event.preventDefault();
+  var url = "todos.php";
+  $.ajax({
+    type: "POST",
+    url: url
+    /*data: $(".colContenido").serialize(),
+    success: function(data){
+      $()
+    }*/
   });
 });
+$(function(){
+  
+})
+  

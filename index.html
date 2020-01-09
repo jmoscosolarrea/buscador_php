@@ -20,7 +20,7 @@
       <h1>Buscador</h1>
     </div>
     <div class="colFiltros">
-      <form action="json3.php" method="post" id="formulario">
+      <form action="buscador.php" method="post" id="formulario">
         <div class="filtrosContenido">
           <div class="tituloFiltros">
             <h5>Realiza una búsqueda personalizada</h5>
@@ -29,12 +29,21 @@
             <label for="selectCiudad">Ciudad:</label>
             <select name="ciudad" id="selectCiudad">
               <option value="" selected>Elige una ciudad</option>
+              <option value="">New York</option>
+              <option value="">Orlando</option>
+              <option value="">Los Angeles</option>
+              <option value="">Houston</option>
+              <option value="">Washington</option>
+              <option value="">Miami</option>
             </select>
           </div>
           <div class="filtroTipo input-field">
             <label for="selecTipo">Tipo:</label><br>
             <select name="tipo" id="selectTipo">
               <option value="" selected>Elige un tipo</option>
+              <option value="">Casa</option>
+              <option value="">Casa de Campo</option>
+              <option value="">Apartamente</option>
             </select>
           </div>
           <div class="filtroPrecio">
@@ -52,9 +61,8 @@
       <div class="tituloContenido card">
         <h5>Resultados de la búsqueda:</h5>
         <div class="divider"></div>
-        <button type="button" name="todos" class="btn-flat waves-effect" id="mostrarTodos">Mostrar Todos</button>
+        <button type="button" name="todos" class="btn-flat waves-effect todos" id="mostrarTodos">Mostrar Todos</button>
       </div>
-
     </div>
   </div>
 
