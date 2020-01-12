@@ -1,7 +1,8 @@
 <?php
     require 'conexion.php';
     $viviendas = json_decode($data);
-    foreach ($viviendas as $vivienda){
+    echo json_encode($viviendas);
+  /*  foreach ($viviendas as $vivienda){
         
         $direccion = $vivienda->Direccion;
         $ciudad = $vivienda->Ciudad;
@@ -17,5 +18,5 @@
         echo "Tipo: $tipo <br>";
         echo "Precio: $precio <br>";
         echo '</pre>';
-    }
+    }*/
 ?>

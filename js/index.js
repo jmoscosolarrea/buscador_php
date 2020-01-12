@@ -52,11 +52,16 @@ inicializarSlider();
 playVideoOnScroll();
 
 $("#formulario").submit(function(event){
-  event.preventDefault();
+   event.preventDefault();
+   /*var ciudad = $('#selectCiudad').val();
+   var tipo = $('#selectTipo').val();
+   var precio = $('rangoPrecio').val();*/
+   var frm = $(this).serialize();
    var url = "buscador.php";
    $.ajax({
      type: "POST",
-     url: url
+     url: url,
+     data: frm
    }).done(function (info) {
      console.log(info);
    });
