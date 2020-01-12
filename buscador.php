@@ -10,12 +10,12 @@
         $tipo = $vivienda->Tipo;
         $precio = $vivienda->Precio;
         echo '<pre>';
-        echo $direccion;
-        echo $ciudad;
-        echo $telefono;
-        echo $cod_pos;
-        echo $tipo;
-        echo $precio;
+        echo "Direccion: $direccion <br>";
+        echo "Ciudad: $ciudad <br>";
+        echo "Telefono: $telefono <br>";
+        echo "Codigo postal: $cod_pos <br>";
+        echo "Tipo: $tipo <br>";
+        echo "Precio: $precio <br>";
         echo '</pre>';
     }
 ?>

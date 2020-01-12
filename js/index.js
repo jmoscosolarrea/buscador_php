@@ -51,19 +51,29 @@ function playVideoOnScroll(){
 inicializarSlider();
 playVideoOnScroll();
 
+$("#formulario").submit(function(event){
+  event.preventDefault();
+   var url = "buscador.php";
+   $.ajax({
+     type: "POST",
+     url: url
+   }).done(function (info) {
+     console.log(info);
+   });
+});
+
 $("button.todos").click(function (event) {
   event.preventDefault();
   var url = "todos.php";
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: url
-    /*data: $(".colContenido").serialize(),
-    success: function(data){
-      $()
-    }*/
+  }).done(function(info){
+    console.log(info);
   });
 });
-$(function(){
-  
-})
+
+$(document).ready(function () {
+  $('select').material_select();
+});
   
