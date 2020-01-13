@@ -57,13 +57,16 @@ $("#formulario").submit(function(event){
    var tipo = $('#selectTipo').val();
    var precio = $('rangoPrecio').val();*/
    var frm = $(this).serialize();
+   console.log(frm);
    var url = "buscador.php";
    $.ajax({
      type: "POST",
      url: url,
      data: frm
    }).done(function (info) {
-     console.log(info);
+     alert(info);
+    arreglo = JSON.parse(info);
+    muestra_datos(arreglo);
    });
 });
 
@@ -74,9 +77,35 @@ $("button.todos").click(function (event) {
     type: "GET",
     url: url
   }).done(function(info){
-    console.log(info);
+    arreglo = JSON.parse(info);
+    muestra_datos(arreglo);
   });
 });
+
+function muestra_datos(arreglo){
+  console.log('estoy en muestra_datos');
+  for (x = 0; x < (arreglo.length); x++) {
+    var direccion = arreglo[x].Direccion;
+    var ciudad = arreglo[x].Ciudad;
+    var telefono = arreglo[x].Telefono;
+    var cod_post = arreglo[x].Codigo_Postal;
+    var tipo = arreglo[x].Tipo;
+    var precio = arreglo[x].Precio;
+    
+    var html = `<div class="itemMostrado">
+                  <img class="itemMostrado" src="img/home.jpg" alt="">
+                  <p>
+                    <span>Direccion:${direccion} </span><br>
+                    <span>Ciudad:${ciudad}</span><br>
+                    <span>Telefono:${telefono}</span><br>
+                    <span>Codigo Postal:${cod_post}</span><br>
+                    <span>Tipo:${tipo}</span><br>
+                    <span class="precioTexto">Precio:${precio}</span><br>
+                  </p>
+              </div>`
+    $("#mostrarDatos").append(html);
+  };
+}
 
 $(document).ready(function () {
   $('select').material_select();
