@@ -63,14 +63,16 @@ $("#formulario").submit(function(event){
      type: "POST",
      url: url,
      data: frm
-   }).done(function (info) {
+   }).done(function(info){
      alert(info);
-    arreglo = JSON.parse(info);
-    muestra_datos(arreglo);
+     arreglo = JSON.parse(info);
+     muestra_datos(arreglo);
+     //arreglo = JSON.parse(info);
+     //muestra_datos(arreglo);
    });
 });
 
-$("button.todos").click(function (event) {
+$("button.todos").click(function(event){
   event.preventDefault();
   var url = "todos.php";
   $.ajax({
@@ -84,7 +86,9 @@ $("button.todos").click(function (event) {
 
 function muestra_datos(arreglo){
   console.log('estoy en muestra_datos');
-  for (x = 0; x < (arreglo.length); x++) {
+  var long_array = arreglo.length;
+  console.log(long_array);
+  for (x = 0; x < long_array; x++) {
     var direccion = arreglo[x].Direccion;
     var ciudad = arreglo[x].Ciudad;
     var telefono = arreglo[x].Telefono;
@@ -105,9 +109,67 @@ function muestra_datos(arreglo){
               </div>`
     $("#mostrarDatos").append(html);
   };
-}
+};
 
-$(document).ready(function () {
+function cargar_ciudad(){
+  var tipo_cargar = "ciudad";
+  //console.log(frm);
+  var url = "carga_selects.php";
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: tipo_cargar
+  }).done(function(info){
+    alert(info);
+    arreglo = JSON.parse(info);
+    carga_ciudad(arreglo);
+    //arreglo = JSON.parse(info);
+    //muestra_datos(arreglo);
+  });
+};
+
+function cargar_tipo(){
+  var tipo_cargar = "tipo";
+  //console.log(frm);
+  var url = "carga_selects.php";
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: tipo_cargar
+  }).done(function (info){
+    alert(info);
+    arreglo = JSON.parse(info);
+    carga_tipo(arreglo);
+    //arreglo = JSON.parse(info);
+    //muestra_datos(arreglo);
+  });
+};
+
+function carga_ciudad(arreglo){
+  console.log('estoy en carga_ciudad');
+  var long_array = arreglo.length;
+  console.log(long_array);
+  for (x = 0; x < long_array; x++) {
+    var ciudad = arreglo[x];
+    var html = `<option value="${ciudad}">${ciudad}</option>`
+    $("#selectCiudad").append(html);
+  };
+};
+
+function carga_tipo(arreglo){
+  console.log('estoy en carga_tipo');
+  var long_array = arreglo.length;
+  console.log(long_array);
+  for (x = 0; x < long_array; x++) {
+    var tipo = arreglo[x];
+    var html = `<option value="${tipo}">${tipo}</option>`
+    $("#selectTipo").append(html);
+  };
+};
+
+$(document).ready(function(){
   $('select').material_select();
+  cargar_ciudad();
+  cargar_tipo();
 });
   
