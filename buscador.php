@@ -7,11 +7,15 @@
     $pos = strpos($rango_post, ";");
     $precio1 = substr($rango_post, 0, $pos);
     $precio1 = number_format($precio1);
+   // $precio1 = '$' . $precio1;
     $precio2 = substr($rango_post, $pos + 1);
     $precio2 = number_format($precio2);
+    //$precio2 = '$' . $precio2;
     $longciudad_post = strlen($ciudad_post);
     $longtipo_post = strlen($tipo_post);
     $longitud_array = count($viviendas);
+    //print("precio1:  {$precio1}");
+    //print("precio2: , {$precio2}");
     $cuenta_casa = 0;
     $inmuebles1=array();
     $inmuebles=array();
@@ -31,7 +35,7 @@
                     array_push($inmuebles1,$inmuebles);
                 }
                 }else{
-                    if($ciudad == $ciudad_post && (($precio_entero >= $precio1 && $precio_entero <= $precio2) || ($precio1 == $precio2))){
+                    if($ciudad == $ciudad_post && $precio >= $precio1 && $precio <= $precio2){
                         $inmuebles=array("Id"=>$id,"Direccion"=>$direccion,"Ciudad"=>$ciudad,"Telefono"=>$telefono,"Codigo_Postal"=>$cod_pos,"Tipo"=>$tipo,"Precio"=>$precio);
                         array_push($inmuebles1,$inmuebles);
                 }
