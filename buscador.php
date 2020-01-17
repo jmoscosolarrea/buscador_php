@@ -31,7 +31,7 @@
                     array_push($inmuebles1,$inmuebles);
                 }
                 }else{
-                    if($ciudad == $ciudad_post && $precio >= $precio1 && $precio <= $precio2){
+                    if($ciudad == $ciudad_post && (($precio_entero >= $precio1 && $precio_entero <= $precio2) || ($precio1 == $precio2))){
                         $inmuebles=array("Id"=>$id,"Direccion"=>$direccion,"Ciudad"=>$ciudad,"Telefono"=>$telefono,"Codigo_Postal"=>$cod_pos,"Tipo"=>$tipo,"Precio"=>$precio);
                         array_push($inmuebles1,$inmuebles);
                 }
