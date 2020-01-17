@@ -7,15 +7,11 @@
     $pos = strpos($rango_post, ";");
     $precio1 = substr($rango_post, 0, $pos);
     $precio1 = number_format($precio1);
-   // $precio1 = '$' . $precio1;
     $precio2 = substr($rango_post, $pos + 1);
     $precio2 = number_format($precio2);
-    //$precio2 = '$' . $precio2;
     $longciudad_post = strlen($ciudad_post);
     $longtipo_post = strlen($tipo_post);
     $longitud_array = count($viviendas);
-    //print("precio1:  {$precio1}");
-    //print("precio2: , {$precio2}");
     $cuenta_casa = 0;
     $inmuebles1=array();
     $inmuebles=array();
