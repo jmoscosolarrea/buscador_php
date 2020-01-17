@@ -61,11 +61,6 @@ $("#formulario").submit(function(event){
      url: url,
      data: frm
    }).done(function(info){
-<<<<<<< HEAD
-     alert(info);
-=======
-     //alert(info);
->>>>>>> d2f989a002608e0bb5516d9079f83752cf1250bf
      arreglo = JSON.parse(info);
      muestra_datos(arreglo);
    });
