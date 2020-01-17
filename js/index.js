@@ -52,7 +52,7 @@ inicializarSlider();
 playVideoOnScroll();
 
 $("#formulario").submit(function(event){
-  $("#mostrarDatos").remove();
+  $("#mostrarDatos").html("");
    event.preventDefault();
    var frm = $(this).serialize();
    var url = "buscador.php";
@@ -61,13 +61,14 @@ $("#formulario").submit(function(event){
      url: url,
      data: frm
    }).done(function(info){
+     alert(info);
      arreglo = JSON.parse(info);
      muestra_datos(arreglo);
    });
 });
 
 $("button.todos").click(function(event){
-  $("#mostrarDatos").remove();
+  $("#mostrarDatos").html("");
   event.preventDefault();
   var url = "todos.php";
   $.ajax({
@@ -80,9 +81,7 @@ $("button.todos").click(function(event){
 });
 
 function muestra_datos(arreglo){
- // $("#mostrarDatos").remove();
   var long_array = arreglo.length;
-  console.log(long_array);
   for (x = 0; x < long_array; x++) {
     var direccion = arreglo[x].Direccion;
     var ciudad = arreglo[x].Ciudad;
@@ -125,16 +124,12 @@ function carga_tipo(arreglo){
 };
 
 $(document).ready(function(){
-
-  //var tipo_cargar = "ciudad";
-  //console.log(frm);
   var url = "cargar_selects.php";
   $.ajax({
     type: "POST",
     url: url,
     data:{tipo_cargar:'ciudad'},
     success: function(respuesta){
-      alert(respuesta)
       respuesta = JSON.parse(respuesta);
       carga_ciudad(respuesta);
       $('select').material_select();
@@ -145,12 +140,10 @@ $(document).ready(function(){
     url: url,
     data:{tipo_cargar: 'tipo'},
     success: function (respuesta) {
-      alert(respuesta)
       respuesta = JSON.parse(respuesta);
       carga_tipo(respuesta);
       $('select').material_select();
     }
   });
- // $('select').material_select();
 });
   
